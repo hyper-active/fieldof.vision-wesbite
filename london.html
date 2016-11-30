@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Field Of Vision</title>
+    <meta name="description" content="Discover The World in 360">
+    <script src="dist/aframe.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  </head>
+  <body>
+  
+    
+    <!-- Cursor Design -->
+    
+     <a-asset>
+
+      <a-mixin id="cursor"  geometry="primitive: ring; segmentsTheta: 12; 
+      radiusOuter: 0.10; radiusInner: 0.06" material="color: gray" cursor></a-mixin>
+      <a-mixin id="cursor-hovering" material="color: blue"></a-mixin>
+      
+      <a-mixin id="click-animation" begin="click" easing="ease-in" attribute="scale"
+               fill="backwards" from="0.1 0.1 0.1" to="1 1 1" dur="150"></a-mixin>
+                     
+      <a-mixin id="fuse-animation" begin="fusing" easing="ease-in" attribute="scale"
+               fill="forwards" from="1 1 1" to="0.1 0.1 0.1" dur="1500"></a-mixin>
+    </a-asset>
+    
+    <a-scene>
+    
+          
+          
+ 	<!-- Cursor Animation -->
+     <a-entity position="0 1.6 0">
+        <a-camera id="camera">
+         <a-entity cursor="fuse: true; maxDistance: 30; timeout: 1000"
+          position="0 0 -2"
+          geometry="primitive: ring;
+          			radiusOuter: 0.2;
+                    radiusInner: 0.1"
+          material="color: white; shader: flat"
+           >
+  <a-animation begin="click" easing="ease-in" attribute="scale"
+               fill="backwards" from="0.1 0.1 0.1" to="0.5 0.5 0.5"></a-animation>
+  <a-animation begin="fusing" easing="ease-in" attribute="scale"
+               fill="forwards" from="0.5 0.5 0.5" to="0.1 0.1 0.1"></a-animation>
+</a-entity>
+        </a-camera>
+      </a-entity>
+    
+	<!-- Default Sky -->          
+      <a-sky id="pano" src="images/london/londonb.jpg" rotation="0 -60 0" 
+      radius="5000" color="#fff"></a-sky>
+      
+     
+     <a-entity id="scene1"> 
+
+      <!-- London Areas -->    
+     <a-image id="buck" src="images/london/thumb/buck.jpg" look-at="#camera" width="8" height="4" 
+     scale="0.05 0.05 0.05" position="1 0.5 -2" rotation="0 -20 0">
+     </a-image>
+     
+     <a-image id="ben" src="images/london/thumb/ben.jpg" look-at="#camera" width="8" height="4" 
+     scale="0.05 0.05 0.05" position="-1.5 0 -2" rotation="0 15 0">
+     </a-image>
+     
+      <a-image id="waterloo" src="images/london/thumb/waterloo.jpg" look-at="#camera" width="8" height="4" 
+     scale="0.05 0.05 0.05" position="-2.5 0 0" rotation="0 90 0">
+     </a-image>
+     
+     <a-image id="thames" src="images/london/thumb/thames.jpg" look-at="#camera" width="8" height="4" 
+     scale="0.05 0.05 0.05" position="-2.5 0 -2" rotation="0 70 0">
+     </a-image>
+     
+     <a-image id="eye" src="images/london/thumb/eye.jpg" look-at="#camera" width="8" height="4" 
+     scale="0.05 0.05 0.05" position="-1.5 0.2 -0.5" rotation="0 90 0">
+     </a-image>
+     
+     <a-image id="bridge" src="images/london/thumb/bridge.jpg" look-at="#camera" width="8" height="4" 
+     scale="0.05 0.05 0.05" position="-1.5 0 0" rotation="0 90 0">
+     </a-image>
+     
+     <a-image id="park" src="images/london/thumb/park.jpg" look-at="#camera" width="8" height="4" 
+     scale="0.05 0.05 0.05" position="0 0 -2" rotation="0 -20 0">
+     </a-image>
+     
+     <a-image src="images/london/adventure2.png" width="8" height="8" 
+     scale="1 1 1" position="0 -10 0" rotation="-90 0 0">
+     </a-image>
+     
+     
+     <!-- Clouds -->
+     <a-image src="images/london/cloud1.png" look-at="#camera" width="20" height="10" 
+     scale="0.2 0.2 0.2" position="-10 0 -6" rotation="0 90 0">
+     <a-animation attribute="position" from="-10 0 -6" to="-10 0 10" dur="200000" easing="linear" repeat="inifite"></a-animation>
+     </a-image>
+     
+     <a-image src="images/london/cloud2.png" look-at="#camera" width="24" height="10" 
+     scale="0.2 0.2 0.2" position="6 1 -6" rotation="0 -90 0">
+     <a-animation attribute="position" from="6 1 -6" to="6 1 10" dur="200000" easing="linear" repeat="inifite"></a-animation>
+     </a-image>
+     
+     <a-image src="images/london/cloud3.png" look-at="#camera" width="24" height="10" 
+     scale="0.2 0.2 0.2" position="0 1 -6" rotation="0 -90 0">
+    <a-animation attribute="position" from="0 1 -6" to="-10 1 -6" dur="200000" easing="linear" repeat="inifite"></a-animation>
+     </a-image>
+     
+     <a-image src="images/london/sun.png" look-at="#camera" width="20" height="20" 
+     scale="0.2 0.2 0.2" position="4 4 -6" rotation="0 -90 0">
+
+     </a-image>
+     
+     </a-entity>
+     
+     <a-image id="menu" src="images/london/londontd2.png" width="8" height="4" 
+     scale="1 1 1" position="0 -3 0" rotation="90 180 0" visible="false">
+     </a-image>
+     
+    
+        
+    </a-scene>
+  </body>
+  
+  <script>
+        
+    var sky = document.querySelector('#pano');   
+    var buck = document.querySelector('#buck');
+	var ben = document.querySelector('#ben');
+	var waterloo = document.querySelector('#waterloo');
+	var thames = document.querySelector('#thames');
+	var eye = document.querySelector('#eye');
+	var bridge = document.querySelector('#bridge');
+	var park = document.querySelector('#park');
+	
+	var scene1 = document.querySelector('#scene1');
+	var menu = document.querySelector('#menu');
+	 
+	
+	
+    document.querySelector('#buck').addEventListener('click', function() {
+		
+      sky.setAttribute('src', 'images/london/buck1b.jpeg');
+	  sky.setAttribute('rotation', '0 -110 0');
+	  scene1.setAttribute('visible', 'false');
+	  menu.setAttribute('visible', 'true');
+	
+    });
+    
+	  document.querySelector('#ben').addEventListener('click', function() {
+		
+      sky.setAttribute('src', 'images/london/bigben1b.jpeg');
+	  sky.setAttribute('rotation', '0 -110 0');
+	  scene1.setAttribute('visible', 'false');
+	  menu.setAttribute('visible', 'true');
+	
+    });
+	
+	document.querySelector('#waterloo').addEventListener('click', function() {
+		
+      sky.setAttribute('src', 'images/london/waterloo1.jpeg');
+	  sky.setAttribute('rotation', '0 -110 0');
+	  scene1.setAttribute('visible', 'false');
+	  menu.setAttribute('visible', 'true');
+	
+    });
+	
+	document.querySelector('#thames').addEventListener('click', function() {
+		
+      sky.setAttribute('src', 'images/london/thames1.jpeg');
+	  sky.setAttribute('rotation', '0 -110 0');
+	  scene1.setAttribute('visible', 'false');
+	  menu.setAttribute('visible', 'true');
+	
+    });
+	
+	document.querySelector('#eye').addEventListener('click', function() {
+		
+      sky.setAttribute('src', 'images/london/eye.jpeg');
+	  sky.setAttribute('rotation', '0 -110 0');
+	  scene1.setAttribute('visible', 'false');
+	  menu.setAttribute('visible', 'true');
+	
+    });
+	
+	document.querySelector('#bridge').addEventListener('click', function() {
+		
+      sky.setAttribute('src', 'images/london/bridge.jpeg');
+	  sky.setAttribute('rotation', '0 -110 0');
+	  scene1.setAttribute('visible', 'false');
+	  menu.setAttribute('visible', 'true');
+	
+    });
+	
+	
+	 document.querySelector('#menu').addEventListener('click', function() {
+		
+      sky.setAttribute('src', 'images/london/londonb.jpg');
+	  sky.setAttribute('rotation', '0 -60 0');
+	  menu.setAttribute('visible', 'false');
+	  scene1.setAttribute('visible', 'true');
+	
+    });
+	
+	 document.querySelector('#park').addEventListener('click', function() {
+		
+      sky.setAttribute('src', 'images/london/park.jpeg');
+	  sky.setAttribute('rotation', '0 -110 0');
+	  scene1.setAttribute('visible', 'false');
+	  menu.setAttribute('visible', 'true');
+	
+    });
+	
+  </script>
+</html>
